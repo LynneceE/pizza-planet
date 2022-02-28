@@ -4,6 +4,12 @@ const pizzaController = {
   // get all pizzas
   getAllPizza(req, res) {
     Pizza.find({})
+    .populate({
+      path: 'comments',
+      select: '-__v' // - sign means dont return __v other wise __v would only be returned
+    })
+    .select('-__v') // pizzas ignore __v 
+    .sort({ _id: -1 }) // return pizza in descending order newest to oldest
       .then(dbPizzaData => res.json(dbPizzaData))
       .catch(err => {
         console.log(err);
@@ -14,6 +20,11 @@ const pizzaController = {
   // get one pizza by id
   getPizzaById({ params }, res) {
     Pizza.findOne({ _id: params.id })
+      .populate({
+        path: 'comments',
+        select: '-__v'
+      })
+      .select('-__v')
       .then(dbPizzaData => res.json(dbPizzaData))
       .catch(err => {
         console.log(err);

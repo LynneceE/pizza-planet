@@ -1,1 +1,14 @@
-Hello
+Differences between SQL and NoSQL
+
+
+SQL table = NoSQL collection
+
+SQL row = NoSQL Document
+
+SQL Column = NoSQL field
+
+SQL requires queries to join multiple tables but NoSQL documents can have hundreds++ fields
+
+NoSQL data organized hierarchically 
+
+NoSQL better for large dataset and evolving data structure
